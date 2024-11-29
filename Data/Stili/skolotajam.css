@@ -1,0 +1,48 @@
+header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+header a{
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    color: black;
+}
+p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+#kreisa{
+    width: 30%;
+    height: 70vh;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+#laba{
+    width: 70%;
+    border: 1px solid;
+    height: 70vh;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#kreisa p{
+    margin-bottom: 1px;
+}
+#kreisaD{
+    width: 30%;
+    height: 70vh;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+#labaD{
+    width: 70%;
+    border: 1px solid;
+    height: 70vh;
+}
+a:hover{
+    text-decoration: underline;
+}
