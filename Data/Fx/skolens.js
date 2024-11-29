@@ -6,6 +6,7 @@ window.onload=function(){
 // Atgādnes
 document.getElementById("atgadnes").addEventListener("click", function(){
     document.getElementById("bloks").style.display = "block"
+    document.getElementById("bloks2").style.display = "none"
 })
 const clickableElements2 = document.querySelectorAll('.atgadeInfo');
  clickableElements2.forEach(element => {
