@@ -24,7 +24,7 @@ const clickableElements2 = document.querySelectorAll('.atgadeInfo');
  // Programmēšanas vide
  document.getElementById("vide").addEventListener("click", function(){
     document.getElementById("bloks").style.display = "none"
-    document.getElementById("bloks2").style.display = "block"
+    document.getElementById("bloks2").style.display = "flex"
 })
 const textarea = document.getElementById("kodaVieta");
 
@@ -55,4 +55,104 @@ document.getElementById("lejupielade").addEventListener("click", function(){
 
 document.getElementById("palaist").addEventListener("click", function(){
     document.getElementById("prieksskatijums").innerHTML = document.getElementById("kodaVieta").value
+    if (document.getElementById("kodaVieta").value.includes("console")) {
+        document.getElementById("konsole").innerHTML = " Hey";
+        (function () {
+                // Target console output div
+                const consoleOutput = document.getElementById("konsole");
+            
+                // Helper function to append messages to the output
+                function appendMessage(message, type) {
+                    const messageElement = document.createElement("div");
+                    messageElement.className = type;
+                    messageElement.textContent = message;
+                    consoleOutput.innerHTML = messageElement;
+                    consoleOutput.scrollTop = consoleOutput.scrollHeight; // Auto-scroll
+                }
+            
+                // Override console methods
+                const originalLog = console.log;
+                const originalWarn = console.warn;
+                const originalError = console.error;
+            
+                console.log = function (...args) {
+                    originalLog.apply(console, args);
+                    args.forEach(arg => appendMessage(arg, "log"));
+                };
+            
+                console.warn = function (...args) {
+                    originalWarn.apply(console, args);
+                    args.forEach(arg => appendMessage(arg, "warn"));
+                };
+            
+                console.error = function (...args) {
+                    originalError.apply(console, args);
+                    args.forEach(arg => appendMessage(arg, "error"));
+                };
+            
+                // Add functionality to "Run Code" button
+                document.getElementById("palaist").addEventListener("click", function(){
+            
+                
+                    const jsCode = document.getElementById("kodaVieta").value;
+                    consoleOutput.innerHTML = " "; // Clear previous output
+                    try {
+                        new Function(jsCode)(); // Execute the user's JavaScript code
+                    } catch (error) {
+                        console.error(error); // Log any errors to the console
+                    }
+                })
+            })();
+    }
+    
 })
+
+// Konsoles izvade blokā
+// (function () {
+//     // Target console output div
+//     const consoleOutput = document.getElementById("konsole");
+
+//     // Helper function to append messages to the output
+//     function appendMessage(message, type) {
+//         const messageElement = document.createElement("div");
+//         messageElement.className = type;
+//         messageElement.textContent = message;
+//         consoleOutput.innerHTML = messageElement;
+//         consoleOutput.scrollTop = consoleOutput.scrollHeight; // Auto-scroll
+//     }
+
+//     // Override console methods
+//     const originalLog = console.log;
+//     const originalWarn = console.warn;
+//     const originalError = console.error;
+
+//     console.log = function (...args) {
+//         originalLog.apply(console, args);
+//         args.forEach(arg => appendMessage(arg, "log"));
+//     };
+
+//     console.warn = function (...args) {
+//         originalWarn.apply(console, args);
+//         args.forEach(arg => appendMessage(arg, "warn"));
+//     };
+
+//     console.error = function (...args) {
+//         originalError.apply(console, args);
+//         args.forEach(arg => appendMessage(arg, "error"));
+//     };
+
+//     // Add functionality to "Run Code" button
+//     document.getElementById("palaist").addEventListener("click", function(){
+
+    
+//         const jsCode = document.getElementById("kodaVieta").value;
+//         consoleOutput.innerHTML = " "; // Clear previous output
+//         try {
+//             new Function(jsCode)(); // Execute the user's JavaScript code
+//         } catch (error) {
+//             console.error(error); // Log any errors to the console
+//         }
+//     })
+// })();
+// })
+
